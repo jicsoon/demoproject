@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{% static 'todo/css/bootstrap.css' %}" rel="stylesheet">
+        <link href="{% static 'todo/css/main.css' %}" rel="stylesheet">
+        <script src="{% static 'todo/js/jquery-3.3.1.js' %}"></script>
+        <script src="{% static 'todo/js/popper.min.js' %}"></script>
+        <script src="{% static 'todo/js/bootstrap.js' %}"></script>
+        
+    </head>
+    <body>
+            <div class="container">
+              <div style="height: 200px; "></div>
+
+              <div class="row">
+                       
+                  <div class="col-2"></div>
+
+                  <div class="col-8">
+
+                            <div class="card text-center bg-dark">
+                                <div class="card-header text-white">
+                                  Activities For The Day
+                                </div> 
+                                    <div class="card-body">
+                                    
+                                      <form  action="{% url 'add' %}" method="POST">
+                                        {% csrf_token %}
+                                            {{form.tid}}<br>
+                                            {{form.content}}<br>
+                                            <div class="form-group ">
+                                                 <button class=" btn btn-outline-warning form-control-sm">ADD</button>
+                                            </div>
+                                      </form>
+                                      <a href="{% url 'deletecomplete' %}"><button class="btn btn-outline-warning form-control-sm" >DELETE COMPLETED</button></a>&nbsp;
+                                      <a href="{% url 'deleteall' %}"><button class="btn btn-outline-warning form-control-sm" >DELETE ALL</button></a>
+                                      <ul class="list-group  ">
+                                        {% for c in data %}
+                                          {%if c.iscomplete %}
+                                          <li class="list-group-item list-group-item-dark  form-control todo-completed" > <h5>{{c.content}} </h5></li>
+                                              {% else %}
+                                             <a href='{{c.get_absolute_url}}'><li class="list-group-item list-group-item-warning  form-control"> <h5> {{c.tid}}.&nbsp &nbsp   {{c.content}} </h5></li></a>
+                                              {%endif%}
+                                       
+                                        {% endfor%}
+                                      </ul>
+
+                                    </div>
+                               
+                            </div>
+                  </div>
+
+                  <div class="col-2"></div>
+
+              </div>
+   
+          </div>
+    </body>
+</html>

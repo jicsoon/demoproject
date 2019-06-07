@@ -1,0 +1,62 @@
+{%extends 'ajax_crud/base.html' %}
+{% load static %}
+
+
+{%block title%}
+    Register 
+{%endblock %}
+   
+    <body>
+        {%block content%}
+               create
+        <div>
+          <form method="POST" action="{% url 'ajax_crud:createVisitor' %}" class="visitor_form">
+              {%csrf_token%}
+              <div class="container"> 
+                            <div class="row">
+                                    <div class="col col-2"> Name : </div><div class="col col-4">   {{form.name}} </div> 
+                            </div><br/>
+                            <div class="row">
+                                    <div class="col col-2"> Password : </div> <div class="col col-4">  {{form.password}}  </div>   
+                            </div>
+                            <button >Submit</button>
+              </div>
+
+          </form>
+        </div>
+
+            {%endblock%}
+
+            <script>
+                 
+               $(document).on('submit','.visitor_form',function(e){
+                        e.preventDefault();
+                        $.ajax({
+                                type:'POST',
+                                url : '/create/',
+                                dataType: 'json',
+                                async : true,
+                                data:{
+                                        csrfmiddlewaretoken :'{{csrf_token}}',
+                                        name : $('#my_name').val(),
+                                        password : $('#my_pass').val()
+                                        
+                                },
+                                
+                                success : function(){
+                                    alert('data submitted successfully');
+                                },
+                                error : function(){
+                                    alert('failed to submit data');
+                                }
+
+                        });
+
+
+               })
+                
+            </script>
+    </body>
+</html>
+
+

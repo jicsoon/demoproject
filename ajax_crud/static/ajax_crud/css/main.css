@@ -1,0 +1,15 @@
+.header{
+    height: 200px;
+}
+
+#todo{
+  height : 500px;    
+  
+}
+
+.todo-completed{
+  text-decoration-line: line-through;
+}
+
+
+

@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+                {%block title%} 
+
+                {%endblock%}
+        </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{% static 'ajax_crud/css/bootstrap.css' %}" rel="stylesheet">
+        <link href="{% static 'ajax_crud/css/bootstrap-grid.css'%}" rel="stylesheet">
+        <link href="{% static 'ajax_crud/css/bootstrap-reboot.css'%}" rel="stylesheet">
+        <link href="{% static 'ajax_crud/css/main.css' %}" rel="stylesheet">
+        <script src="{% static 'ajax_crud/js/jquery-3.3.1.js' %}"></script>
+        <script src="{% static 'ajax_crud/js/popper.min.js' %}"></script>
+        <script src="{% static 'ajax_crud/js/bootstrap.js' %}"></script>
+    </head>
+    <body>
+    
+        {%block content%} 
+
+        {%endblock%}
+    </body>
+</html>
