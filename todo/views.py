@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.views.decorators.http import require_POST
 
-#from .forms import TodoForm
+#from .forms import TodoForm   # ready to be deployed
 from .forms import ModelTodoForm
 from .models import Todo
 # Create your views here.
